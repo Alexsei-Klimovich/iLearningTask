@@ -37,8 +37,19 @@ public class User {
     @NotNull
     private Date registered = new Date();
 
+    @Column(name = "roles")
+    private String roles;
+
     @Column(name = "last_activity")
     private Date lastActivity = new Date();
+
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 
     public Long getId() {
         return id;

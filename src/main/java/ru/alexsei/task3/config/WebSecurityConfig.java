@@ -38,6 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().
                 antMatchers("/", "/login","/registration").permitAll();
         http.authorizeRequests().
+                antMatchers("/users")
+                .access("hasRole('ROLE_USER')");
+        http.authorizeRequests().
                 and().exceptionHandling().accessDeniedPage("/403");
         http.authorizeRequests().and().formLogin()//
                 .loginProcessingUrl("/j_spring_security_check")
