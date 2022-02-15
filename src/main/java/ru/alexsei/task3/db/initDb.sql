@@ -1,10 +1,11 @@
 DROP TABLE IF EXISTS users;
-DROP SEQUENCE global_seq;
-CREATE SEQUENCE global_seq START WITH 10000;
+DROP SEQUENCE IF EXISTS global_seq;
+DROP SEQUENCE IF EXISTS hibernate_sequence;
+CREATE SEQUENCE hibernate_sequence START WITH 1;
 
 CREATE TABLE users
 (
-    id               INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    id               SERIAL                        PRIMARY KEY,
     user_name        VARCHAR                           NOT NULL,
     email            VARCHAR                           NOT NULL,
     password         VARCHAR                           NOT NULL,
