@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import ru.alexsei.task3.service.MyUserDetailsService;
 
 @Configuration
@@ -42,11 +43,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .access("hasRole('ROLE_USER')");
         http.authorizeRequests().
                 and().exceptionHandling().accessDeniedPage("/403");
-        http.authorizeRequests().and().formLogin()//
+        http.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
-                .defaultSuccessUrl("/")//
-                .failureUrl("/login?error=true")//
-                .usernameParameter("username")//
+                .defaultSuccessUrl("/users")
+                .failureUrl("/login?error=true")
+                .usernameParameter("username")
                 .passwordParameter("password")
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
                 .and().rememberMe().key("secret").tokenValiditySeconds(500000);
