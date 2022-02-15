@@ -38,7 +38,7 @@ public class User {
     private Date registered = new Date();
 
     @Column(name = "roles")
-    private String roles;
+    private String roles = "ROLE_USER";
 
     @Column(name = "last_activity")
     private Date lastActivity = new Date();
