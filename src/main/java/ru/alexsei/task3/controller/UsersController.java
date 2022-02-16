@@ -19,6 +19,16 @@ public class UsersController {
     @Autowired
     MyUserDetailsService userDetailsService;
 
+    @GetMapping("/userPage")
+    String userPage(Model model){
+        return "userprofilePage";
+    }
+
+
+
+    //////////////////////TASK 3 UNDER///////////////////////
+
+
 
     @GetMapping("/users")
     String getUsers(Model model){
@@ -55,11 +65,6 @@ public class UsersController {
         }
         return "redirect:/users";
     }
-
-
-
-
-
 
 
 
