@@ -15,48 +15,42 @@ import java.util.Map;
 
 @Controller
 public class UsersController {
-
     @Autowired
     MyUserDetailsService userDetailsService;
 
     @GetMapping("/userPage")
-    String userPage(Model model){
+    String userPage(Model model) {
         return "userprofilePage";
     }
 
-
-
     //////////////////////TASK 3 UNDER///////////////////////
 
-
-
     @GetMapping("/users")
-    String getUsers(Model model){
+    String getUsers(Model model) {
         List<User> users = userDetailsService.allUsers();
-        model.addAttribute("users",users);
+        model.addAttribute("users", users);
         return "usersForm";
     }
 
     @PostMapping("/users")
-    String usersToolbar(@Nullable @RequestParam("checkboxName") String checkboxValue[], @RequestParam(name = "buttonType") String buttonType){
-
-        switch (buttonType){
+    String usersToolbar(@Nullable @RequestParam("checkboxName") String checkboxValue[], @RequestParam(name = "buttonType") String buttonType) {
+        switch (buttonType) {
             case ("delete"):
-                if(checkboxValue!=null) {
+                if (checkboxValue != null) {
                     for (String s : checkboxValue) {
                         userDetailsService.deleteUserById(Long.parseLong(s));
                     }
                 }
                 break;
             case ("unlock"):
-                if(checkboxValue!=null) {
+                if (checkboxValue != null) {
                     for (String s : checkboxValue) {
                         userDetailsService.unlockUserById(Long.parseLong(s));
                     }
                 }
                 break;
             case ("lock"):
-                if(checkboxValue!=null) {
+                if (checkboxValue != null) {
                     for (String s : checkboxValue) {
                         userDetailsService.lockUserById(Long.parseLong(s));
                     }
@@ -65,7 +59,4 @@ public class UsersController {
         }
         return "redirect:/users";
     }
-
-
-
 }

@@ -11,13 +11,12 @@ import java.util.Date;
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name ="password",nullable = false)
+    @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 1)
     private String password;

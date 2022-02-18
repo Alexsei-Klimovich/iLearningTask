@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Optional;
 @Service
 public class MyUserDetailsService implements UserDetailsService, ApplicationListener<AuthenticationSuccessEvent> {
-
     @Autowired
     UserRepository userRepository;
 
@@ -109,7 +108,4 @@ public class MyUserDetailsService implements UserDetailsService, ApplicationList
         newUser.setEnabled(true);
         userRepository.save(newUser);
     }
-
-
-
 }

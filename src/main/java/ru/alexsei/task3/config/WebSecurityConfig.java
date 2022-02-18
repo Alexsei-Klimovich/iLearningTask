@@ -16,7 +16,6 @@ import ru.alexsei.task3.service.MyUserDetailsService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
     MyUserDetailsService userDetailsService;
 
@@ -27,25 +26,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.userDetailsService(userDetailsService).passwordEncoder(bcryptPasswordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-
         http.csrf().disable();
         http.authorizeRequests().
-                antMatchers("/", "/login","/registration").permitAll();
+                antMatchers("/", "/login", "/registration").permitAll();
         http.authorizeRequests().
-                antMatchers("/users")
+                antMatchers("/userPage")
                 .access("hasRole('ROLE_USER')");
         http.authorizeRequests().
                 and().exceptionHandling().accessDeniedPage("/403");
         http.authorizeRequests().and().formLogin()
                 .loginProcessingUrl("/j_spring_security_check")
-                .defaultSuccessUrl("/users")
+                .defaultSuccessUrl("/userPage")
                 .failureUrl("/login?error=true")
                 .usernameParameter("username")
                 .passwordParameter("password")
