@@ -15,3 +15,16 @@ CREATE TABLE users
     roles            VARCHAR                           NOT NULL
 );
 
+DROP TABLE IF EXISTS messages;
+CREATE TABLE messages
+(
+    message_id                serial         DEFAULT nextval('hibernate_sequence')         PRIMARY KEY ,
+    recipient_username        VARCHAR                           NOT NULL,
+    sender_username           VARCHAR                           NOT NULL,
+    topic                     VARCHAR                           NOT NULL,
+    text                      VARCHAR                           NOT NULL,
+    sent_time                 TIMESTAMP           DEFAULT now() NOT NULL,
+    is_read                   BOOL                DEFAULT FALSE  NOT NULL
+);
+
+
