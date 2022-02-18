@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Users</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<div th:insert="~{header :: header}"></div>
+<body class="container">
+    <table class="table table-striped table-bordered ">
+        <tr>
+            <th>FROM</th>
+            <th>DATE</th>
+            <th>TOPIC</th>
+        </tr>
+        <tr th:object="${message}">
+            <td class="align-middle" th:text="${message.senderUsername}">
+            <td class="align-middle" th:text="${message.sentTime}"></td>
+            <td class="align-middle" ><a th:text="${message.topic}" ></a></td>
+        </tr>
+    </table>
+    <h1 class="h2">Message</h1>
+    <textarea class="form-control" readonly="readonly" th:text="${message.text}"></textarea>
+
+    <a th:href="'/topic/reply/'+${message.messageId}" class="btn btn-outline-warning">CREATE REPLY</a>
+</body>
+
+</html>
