@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-    <div class="container my-3">
-        <h1>HI, PRESS BUTTON</h1>
-        <a class="btn btn-primary" href="/createMessage" role="button">CREATE MESSAGE</a>
-        <a class="btn btn-primary" href="/myMessages" role="button">MY MESSAGES</a>
+<div th:insert="~{header :: header}"></div>
+    <div class="col-md-4 mx-auto">
+        <h1 align="center">Welcome to user menu</h1>
+        <a class="btn btn-primary btn-block mt-6" align="center" href="/createMessage" role="button">CREATE MESSAGE</a><label></label>
+        <a class="btn btn-primary btn-block mt-6" href="/myMessages" role="button">MY MESSAGES</a>
     </div>
 
 

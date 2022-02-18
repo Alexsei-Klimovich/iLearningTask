@@ -14,14 +14,13 @@ import java.util.Map;
 
 @Controller
 public class RegistrationController {
-
     private BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder();
+
     @Autowired
     private MyUserDetailsService userDetailsService;
 
     @PostMapping("/registration")
     public String saveUser(Model model, @ModelAttribute User user){
-
         if(userDetailsService.isUserNameExists(user.getUserName()) || userDetailsService.isEmailExists(user.getEmail())){
             model.addAttribute("message", "Username/Email already exists");
             return "registrationPage";
@@ -31,5 +30,4 @@ public class RegistrationController {
         userDetailsService.createUser(user);
         return "redirect:/login";
     }
-
 }
