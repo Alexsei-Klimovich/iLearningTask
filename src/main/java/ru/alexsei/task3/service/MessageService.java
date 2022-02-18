@@ -11,15 +11,17 @@ import java.util.List;
 
 @Service
 public class MessageService {
-
     @Autowired
     MessageRepository messageRepository;
 
+    public Message getMessageById(Long id) {
+        return messageRepository.getById(id);
+    }
 
-
-    public void createMessage(Message message){
+    public void createMessage(Message message) {
         messageRepository.save(message);
     }
+
     public List<Message> allMessages() {
         return messageRepository.findAll();
     }

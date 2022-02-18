@@ -8,18 +8,16 @@ import java.util.Date;
 @Entity
 @Table(name = "messages")
 public class Message {
-
     @Id
-
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "message_id")
     Long messageId;
 
-    @Column(name = "is_read",columnDefinition = "bool default false")
+    @Column(name = "is_read", columnDefinition = "bool default false")
     Boolean isRead = false;
 
     @Column(name = "recipient_username")
-    String  recipientUsername;
+    String recipientUsername;
 
     @Column(name = "sender_username")
     String senderUsername;
